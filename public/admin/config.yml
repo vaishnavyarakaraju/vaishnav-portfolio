@@ -1,0 +1,221 @@
+# Decap CMS configuration. The backend (GitHub repo + login) is set in admin/index.html.
+site_url: https://vaishnav-portfolio-three-zeta.vercel.app
+display_url: https://vaishnav-portfolio-three-zeta.vercel.app
+logo_url: /icon.svg
+locale: en
+
+# Uploaded images and PDFs are stored in the repo under public/images/uploads.
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: content
+    label: Portfolio content
+    editor: { preview: false }
+    files:
+      # ----------------------------------------------------------------- Skills
+      - name: skills
+        label: "Technical skills"
+        file: content/skills.json
+        fields:
+          - name: groups
+            label: "Skill groups"
+            widget: list
+            collapsed: false
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Group name", widget: string }
+              - &icon { name: icon, label: Icon, widget: select, options: [Code2, Server, Cloud, Database, Workflow, Activity, Plug, Layers, Container, AppWindow, ShieldCheck], default: Code2 }
+              - name: skills
+                label: Skills
+                widget: string
+                hint: "Separate with commas, e.g. Python, Java, SQL"
+
+      # ------------------------------------------------------------- Experience
+      - name: experience
+        label: "Experience"
+        file: content/experience.json
+        fields:
+          - name: jobs
+            label: "Jobs (newest first)"
+            widget: list
+            summary: "{{fields.role}} · {{fields.company}} ({{fields.start}} – {{fields.end}})"
+            fields:
+              - { name: company, label: Company, widget: string }
+              - { name: role, label: "Job title", widget: string }
+              - { name: location, label: Location, widget: string, required: false }
+              - { name: start, label: "Start (e.g. Jan 2026)", widget: string }
+              - { name: end, label: "End (e.g. Present)", widget: string }
+              - { name: summary, label: "One-line summary", widget: text }
+              - name: highlights
+                label: "Impact highlights"
+                widget: list
+                required: false
+                field: { name: item, label: Highlight, widget: text }
+              - name: responsibilities
+                label: "Key responsibilities"
+                widget: list
+                collapsed: false
+                field: { name: item, label: Responsibility, widget: text }
+              - name: tools
+                label: "Tools"
+                widget: string
+                hint: "Separate with commas, e.g. Python, Java, SQL"
+              - { name: logo, label: "Company logo (official only)", widget: image, required: false }
+
+      # --------------------------------------------------------------- Projects
+      - name: projects
+        label: "Projects"
+        file: content/projects.json
+        fields:
+          - name: categories
+            label: "Project categories (filter buttons)"
+            widget: string
+            hint: "Separate with commas, e.g. Python, Java, SQL"
+          - name: projects
+            label: "Projects (first two are featured)"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: slug, label: "Page address", widget: string, hint: "Lowercase words joined by dashes, e.g. my-new-project. Becomes /projects/my-new-project" }
+              - { name: title, label: Title, widget: string }
+              - { name: category, label: "Category (must match one above)", widget: string }
+              - { name: source, label: "Source (e.g. Project, or Work at Company)", widget: string }
+              - { name: tagline, label: "Tagline", widget: string }
+              - { name: overview, label: "Overview", widget: text }
+              - { name: problem, label: "The problem", widget: text }
+              - name: architecture
+                label: "Architecture steps"
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Step, widget: string }
+                  - { name: detail, label: Detail, widget: text }
+              - name: technologies
+                label: Technologies
+                widget: string
+                hint: "Separate with commas, e.g. Python, Java, SQL"
+              - name: contribution
+                label: "My contribution"
+                widget: list
+                field: { name: item, label: Point, widget: text }
+              - name: results
+                label: "Results"
+                widget: list
+                field: { name: item, label: Result, widget: text }
+              - { name: diagram, label: "Diagram style", widget: select, options: [etl, monitoring, deploy, identity, reconcile], default: etl }
+              - { name: github, label: "GitHub repo URL", widget: string, required: false }
+              - { name: demo, label: "Live demo URL", widget: string, required: false }
+              - name: screenshots
+                label: Screenshots
+                widget: list
+                required: false
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: "Description (for accessibility)", widget: string }
+
+      # --------------------------------------------------------- Certifications
+      - name: certifications
+        label: "Certifications"
+        file: content/certifications.json
+        fields:
+          - name: items
+            label: "Certifications (first one is featured)"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: issuer, label: Issuer, widget: string }
+              - { name: issued, label: "Issue date", widget: string, required: false }
+              - { name: expires, label: "Expiry date", widget: string, required: false }
+              - { name: credentialId, label: "Credential / validation ID", widget: string, required: false }
+              - { name: verifyUrl, label: "Verification link", widget: string, required: false }
+              - { name: image, label: "Certificate image", widget: image, required: false }
+              - { name: badge, label: "Badge image", widget: image, required: false }
+              - { name: pdf, label: "Certificate PDF", widget: file, required: false }
+
+      # ---------------------------------------------------------------- Profile
+      - name: profile
+        label: "Profile, hero & contact"
+        file: content/profile.json
+        fields:
+          - { name: name, label: "Display name", widget: string }
+          - { name: fullName, label: "Full legal name", widget: string }
+          - { name: initials, label: "Initials (logo)", widget: string }
+          - { name: headline, label: "Headline / current title", widget: string }
+          - { name: location, label: "Location", widget: string }
+          - name: heroTitle
+            label: "Hero heading lines"
+            hint: "One line each. The last word of the last line is shown in italics."
+            widget: list
+            field: { name: line, label: Line, widget: string }
+          - { name: heroDescription, label: "Hero description", widget: text }
+          - name: disciplines
+            label: "Focus areas (shown under the hero text)"
+            widget: string
+            hint: "Separate with commas, e.g. Python, Java, SQL"
+          - { name: email, label: "Email", widget: string }
+          - { name: linkedin, label: "LinkedIn URL", widget: string }
+          - { name: github, label: "GitHub URL", widget: string, required: false }
+          - { name: resume, label: "Resume (PDF)", widget: file, hint: "Upload a new PDF to replace the resume.", choose_url: false }
+          - { name: portrait, label: "Portrait photo", widget: image, required: false, hint: "Optional. Shown in the hero and About section." }
+          - { name: url, label: "Public website address", widget: string, hint: "Used for link previews, e.g. https://vaishnav-portfolio-three-zeta.vercel.app" }
+
+      # ---------------------------------------------------------------- Summary
+      - name: summary
+        label: "Summary"
+        file: content/summary.json
+        fields:
+          - { name: intro, label: "Intro paragraph", widget: text }
+          - name: stats
+            label: "Key numbers"
+            widget: list
+            summary: "{{fields.value}} · {{fields.label}}"
+            fields:
+              - { name: value, label: "Number (e.g. 12,000+)", widget: string }
+              - { name: label, label: "What it means", widget: string }
+          - name: areas
+            label: "Focus area cards"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - *icon
+              - { name: title, label: Title, widget: string }
+              - { name: body, label: Text, widget: text }
+
+      # -------------------------------------------------------------- Education
+      - name: education
+        label: "Education"
+        file: content/education.json
+        fields:
+          - name: items
+            label: "Schools"
+            widget: list
+            summary: "{{fields.degree}} · {{fields.institution}}"
+            fields:
+              - { name: institution, label: Institution, widget: string }
+              - { name: location, label: Location, widget: string }
+              - { name: degree, label: Degree, widget: string }
+              - { name: concentration, label: Concentration, widget: string, required: false }
+              - { name: start, label: Start, widget: string }
+              - { name: end, label: End, widget: string }
+              - name: coursework
+                label: "Relevant coursework"
+                widget: string
+                required: false
+                hint: "Separate with commas, e.g. Python, Java, SQL"
+              - { name: logo, label: "University logo (official only)", widget: image, required: false }
+
+      # ------------------------------------------------------------------ About
+      - name: about
+        label: "About me"
+        file: content/about.json
+        fields:
+          - name: paragraphs
+            label: Paragraphs
+            widget: list
+            field: { name: item, label: Paragraph, widget: text }
+          - name: interests
+            label: Interests
+            widget: string
+            hint: "Separate with commas, e.g. Python, Java, SQL"

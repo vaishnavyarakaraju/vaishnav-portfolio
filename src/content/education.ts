@@ -1,4 +1,7 @@
-/** Education history. Add coursework or academic projects when available. */
+/** Education. Edit in /content/education.json or at /admin. */
+import { toList } from "./list";
+import data from "../../content/education.json";
+
 export type Education = {
   institution: string;
   location: string;
@@ -10,14 +13,4 @@ export type Education = {
   logo?: string;
 };
 
-export const education: Education[] = [
-  {
-    institution: "George Mason University",
-    location: "Virginia, USA",
-    degree: "Master of Science in Information Systems",
-    concentration: "Cloud-based Information Systems",
-    start: "Aug 2023",
-    end: "May 2025",
-    coursework: [],
-  },
-];
+export const education: Education[] = (data.items ?? []).map((e) => ({ ...e, coursework: toList(e.coursework) }));

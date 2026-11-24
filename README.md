@@ -13,31 +13,23 @@ npm start          # serve the production build
 
 Requires Node.js 18.18 or newer (20+ recommended).
 
-## Editing content
+## Editing content (no code needed)
 
-All content lives in `src/content/`. You never need to touch the components to update the site.
+Open **/admin** on the live site (e.g. https://vaishnav-portfolio-three-zeta.vercel.app/admin), log in with GitHub, edit, and click **Publish → Publish now**. The admin saves the change to GitHub and Vercel redeploys the site in about a minute.
 
-| What | File |
-| --- | --- |
-| Name, headline, email, LinkedIn, **GitHub URL**, portrait, resume path | `src/content/site.ts` |
-| Summary stats and focus areas | `src/content/summary.ts` |
-| Jobs (newest first) | `src/content/experience.ts` |
-| Projects (each gets its own page at `/projects/<slug>`) | `src/content/projects.ts` |
-| Skill categories | `src/content/skills.ts` |
-| Certifications | `src/content/certifications.ts` |
-| Education | `src/content/education.ts` |
-| About Me text and interests | `src/content/about.ts` |
+All content lives in `content/*.json` (profile, summary, experience, projects, skills, certifications, education, about). Short lists such as skills and tools are written as comma-separated text, e.g. `Python, Java, SQL`. Uploaded images and PDFs go to `public/images/uploads/`.
 
-### Things still to fill in
+### One-time admin setup
 
-- **GitHub:** set `github` in `site.ts`. The GitHub buttons switch from "soon" to live links automatically.
-- **Portrait:** add `public/images/portrait.jpg` and set `portrait: "/images/portrait.jpg"` in `site.ts`. It appears in the hero and About sections.
-- **Certificate:** add the image to `public/certifications/` and set `image`, `issued`, `expires`, `credentialId` and `verifyUrl` in `certifications.ts`. Clicking the image opens a lightbox.
-- **Project links and screenshots:** set `github` / `demo` and add images under `public/projects/<slug>/` listed in `screenshots`.
-- **Resume:** replace `public/Vaishnav_Yarakaraju_Resume.pdf` (keep the filename, or update `resume` in `site.ts`).
-- **Site URL:** set `NEXT_PUBLIC_SITE_URL` in Vercel (or edit `url` in `site.ts`) so social previews and the sitemap use the real domain.
+1. GitHub → Settings → Developer settings → **OAuth Apps** → **New OAuth App**
+   - Homepage URL: `https://vaishnav-portfolio-three-zeta.vercel.app`
+   - Authorization callback URL: `https://vaishnav-portfolio-three-zeta.vercel.app/api/callback`
+2. Copy the **Client ID** and generate a **Client secret**.
+3. Vercel → Project → Settings → Environment Variables: add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`, then redeploy.
 
-Company or university logos should only be added from official assets (`logo` field, files in `public/`).
+Only GitHub accounts with write access to the repository can save changes. If the site moves to a custom domain, update both URLs in the OAuth App and `site_url` in `public/admin/config.yml`.
+
+To try the admin on your own computer without logging in: run `npx decap-server` in this folder, start `npm run dev`, and open http://localhost:3000/admin.
 
 ## Deploy to Vercel (free)
 
@@ -54,8 +46,10 @@ src/
   app/            layout, home page, /projects/[slug], 404, icon, OG image, sitemap, robots
   components/     Nav, Hero, Summary, Experience, Projects, Diagram, Skills,
                   Certifications, Lightbox, Education, About, Contact, Footer
-  content/        all editable content (see above)
-public/           resume PDF and future images
+  content/        TypeScript loaders for /content/*.json
+content/          all editable content (JSON, edited via /admin)
+public/admin/     the admin panel (Decap CMS)
+public/           resume PDF and images
 ```
 
 ## Features

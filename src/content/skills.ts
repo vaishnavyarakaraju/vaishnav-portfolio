@@ -1,17 +1,6 @@
-/**
- * Technical skills, grouped by category. Add or remove strings freely.
- * `icon` is any Lucide icon name registered in components/Icon.tsx.
- */
-export type SkillGroup = { title: string; icon: string; skills: string[] };
+/** Skill groups. Edit in /content/skills.json or at /admin. */
+import { toList } from "./list";
+import data from "../../content/skills.json";
 
-export const skillGroups: SkillGroup[] = [
-  { title: "Programming", icon: "Code2", skills: ["Python", "Java", "C#", "JavaScript", "TypeScript", "SQL", "C++", "Bash"] },
-  { title: "Application Development", icon: "AppWindow", skills: ["ASP.NET", ".NET Core", "Angular", "Web Services", "Application Integration"] },
-  { title: "Cloud", icon: "Cloud", skills: ["AWS", "Azure", "Google Cloud Platform"] },
-  { title: "AWS Services", icon: "Layers", skills: ["Lambda", "S3", "Glue", "Redshift", "CloudWatch", "DynamoDB", "EventBridge", "SNS"] },
-  { title: "DevOps & Infrastructure", icon: "Container", skills: ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "Jenkins", "CI/CD", "Linux", "Git"] },
-  { title: "Databases & Data Engineering", icon: "Database", skills: ["SQL", "Microsoft SQL Server", "MySQL", "Stored Procedures", "SSRS", "ETL", "Data Pipelines", "Data Quality", "Data Monitoring"] },
-  { title: "APIs & Backend", icon: "Plug", skills: ["REST APIs", "Webhooks", "OAuth 2.0", "OIDC", "SAML", "Postman", "curl"] },
-  { title: "Monitoring & Observability", icon: "Activity", skills: ["Grafana", "Sentry", "AWS CloudWatch"] },
-  { title: "Practices & Compliance", icon: "ShieldCheck", skills: ["Agile / Scrum", "SDLC", "Unit & Integration Testing", "Root Cause Analysis", "Production Support", "HIPAA"] },
-];
+export type SkillGroup = { title: string; icon: string; skills: string[] };
+export const skillGroups: SkillGroup[] = (data.groups ?? []).map((g) => ({ title: g.title, icon: g.icon, skills: toList(g.skills) }));

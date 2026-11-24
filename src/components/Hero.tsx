@@ -36,7 +36,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.9, delay: 0.1 + i * 0.12, ease }}
                 >
-                  {i === 2 ? (<>Creating <em>impact.</em></>) : line}
+                  {i === site.heroTitle.length - 1 && line.includes(" ") ? (<>{line.slice(0, line.lastIndexOf(" ") + 1)}<em>{line.slice(line.lastIndexOf(" ") + 1)}</em></>) : line}
                 </motion.span>
               ))}
             </h1>
@@ -93,8 +93,12 @@ export function Hero() {
                   </span>
                   Currently
                 </p>
-                <p className="mt-4 text-xl font-semibold leading-snug tracking-tight">{current.role}</p>
-                <p className="mt-1 text-[15px] text-fg/75">{current.company}</p>
+                {current && (
+                  <>
+                    <p className="mt-4 text-xl font-semibold leading-snug tracking-tight">{current.role}</p>
+                    <p className="mt-1 text-[15px] text-fg/75">{current.company}</p>
+                  </>
+                )}
 
                 <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-muted">Previously</p>
                 <ul className="mt-3 space-y-2.5">
@@ -105,10 +109,14 @@ export function Hero() {
                   ))}
                 </ul>
 
-                <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-muted">Studied</p>
-                <p className="mt-3 text-[15px] leading-snug">
-                  {education[0].degree} <span className="text-muted">at {education[0].institution}</span>
-                </p>
+                {education[0] && (
+                  <>
+                    <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-muted">Studied</p>
+                    <p className="mt-3 text-[15px] leading-snug">
+                      {education[0].degree} <span className="text-muted">at {education[0].institution}</span>
+                    </p>
+                  </>
+                )}
               </aside>
             )}
           </motion.div>

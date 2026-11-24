@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Portfolio Admin</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <script>window.CMS_MANUAL_INIT = true;</script>
+    <!-- Decap CMS: free, open-source, saves edits as commits to GitHub. -->
+    <script src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
+    <script>
+      var isLocal = ["localhost", "127.0.0.1"].indexOf(window.location.hostname) !== -1;
+      CMS.init({
+        config: {
+          // Edits are committed straight to this repository; Vercel then redeploys the site.
+          backend: {
+            name: "github",
+            repo: "vaishnavyarakaraju/vaishnav-portfolio",
+            branch: "main",
+            base_url: window.location.origin,
+            auth_endpoint: "api/auth",
+            commit_messages: { update: "Update {{collection}} “{{slug}}” from admin" }
+          },
+          // When running on your own computer (npx decap-server), edit local files instead.
+          local_backend: isLocal
+        }
+      });
+    </script>
+  </body>
+</html>

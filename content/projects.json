@@ -1,0 +1,201 @@
+{
+  "categories": "Cloud Infrastructure Automation, Data Engineering and ETL Pipelines, Production Monitoring and Observability, Backend Development and API Integration, Automation and System Administration",
+  "projects": [
+    {
+      "slug": "asset-reconciliation-etl-pipeline",
+      "title": "Asset Reconciliation and Data Quality ETL Pipeline",
+      "category": "Data Engineering and ETL Pipelines",
+      "source": "Project",
+      "tagline": "Event-driven, serverless reconciliation for 12,000+ infrastructure resources.",
+      "overview": "An automated ETL pipeline built with Python and AWS Lambda that collects, transforms and validates infrastructure records from multiple data sources.",
+      "problem": "Infrastructure records arriving from several sources can contain duplicates, missing attributes and inconsistent values, which makes enterprise datasets unreliable.",
+      "architecture": [
+        {
+          "label": "Ingest",
+          "detail": "Python on AWS Lambda collects infrastructure records from multiple data sources."
+        },
+        {
+          "label": "Trigger",
+          "detail": "Amazon EventBridge runs reconciliation workflows automatically whenever asset information changes."
+        },
+        {
+          "label": "Validate",
+          "detail": "Reconciliation logic flags duplicate records, missing attributes and inconsistent values."
+        },
+        {
+          "label": "Store",
+          "detail": "Structured results are stored in Amazon DynamoDB."
+        },
+        {
+          "label": "Observe",
+          "detail": "Amazon CloudWatch and Amazon SNS provide execution monitoring, exception tracking and notifications."
+        }
+      ],
+      "technologies": "Python, AWS Lambda, Amazon EventBridge, Amazon DynamoDB, Amazon CloudWatch, Amazon SNS",
+      "contribution": [
+        "Designed and developed the ETL pipeline end to end.",
+        "Implemented the event-driven processing and DynamoDB storage model.",
+        "Wrote the validation and reconciliation logic.",
+        "Integrated monitoring, exception tracking and automated notifications."
+      ],
+      "results": [
+        "Validation across more than 12,000 infrastructure resources.",
+        "Improved consistency and reliability across enterprise datasets.",
+        "Reported 99.2% availability."
+      ],
+      "diagram": "etl",
+      "github": "",
+      "demo": "",
+      "screenshots": []
+    },
+    {
+      "slug": "production-data-monitoring-framework",
+      "title": "Production Data Monitoring and Quality Framework",
+      "category": "Production Monitoring and Observability",
+      "source": "Project",
+      "tagline": "Catching bad records before they reach downstream reporting.",
+      "overview": "A Python-based framework that validates production records, detects processing anomalies and surfaces inconsistencies across backend data workflows.",
+      "problem": "Missing or inconsistent records in backend workflows can quietly affect downstream reporting and application processes if they are not caught early.",
+      "architecture": [
+        {
+          "label": "Validate",
+          "detail": "Python checks validate production records and detect processing anomalies."
+        },
+        {
+          "label": "Handle",
+          "detail": "Automated exception-handling workflows isolate missing or inconsistent records."
+        },
+        {
+          "label": "Visualize",
+          "detail": "AWS CloudWatch and Grafana dashboards track application health, processing activity and operational metrics."
+        },
+        {
+          "label": "Improve",
+          "detail": "Recurring failures are investigated and root causes documented with corrective actions."
+        }
+      ],
+      "technologies": "Python, AWS CloudWatch, Grafana",
+      "contribution": [
+        "Developed the monitoring framework and automated validation checks.",
+        "Built the CloudWatch and Grafana dashboards.",
+        "Investigated recurring processing failures and documented root causes."
+      ],
+      "results": [
+        "Better visibility into system behaviour and production performance.",
+        "Issues identified before they affected downstream reporting.",
+        "Improved data reliability and troubleshooting efficiency."
+      ],
+      "diagram": "monitoring",
+      "github": "",
+      "demo": "",
+      "screenshots": []
+    },
+    {
+      "slug": "deployment-validation-automation",
+      "title": "Automated Health Checks and Deployment Validation",
+      "category": "Cloud Infrastructure Automation",
+      "source": "Work at Community Dreams Foundation USA",
+      "tagline": "Release verification from ~40 minutes to under 10.",
+      "overview": "Python health checks and deployment validation scripts for cloud-hosted applications backed by AWS integration workflows.",
+      "problem": "Verifying each release by hand was slow, and the applications needed to stay reliable during periods of increased demand.",
+      "architecture": [
+        {
+          "label": "Deploy",
+          "detail": "Cloud-hosted applications supported by Python backend services and AWS integration workflows."
+        },
+        {
+          "label": "Check",
+          "detail": "Automated application health checks run after deployment."
+        },
+        {
+          "label": "Validate",
+          "detail": "Deployment validation scripts confirm the release behaves as expected."
+        },
+        {
+          "label": "Monitor",
+          "detail": "Grafana and Sentry surface recurring exceptions and performance issues."
+        }
+      ],
+      "technologies": "Python, AWS, Grafana, Sentry",
+      "contribution": [
+        "Built the health check and deployment validation scripts.",
+        "Developed and maintained the backend services and AWS integration workflows."
+      ],
+      "results": [
+        "Release verification reduced from ~40 minutes to under 10 minutes.",
+        "Deployment efficiency improved by more than 75%.",
+        "Supported a reported 10x increase in traffic."
+      ],
+      "diagram": "deploy"
+    },
+    {
+      "slug": "secure-api-identity-integrations",
+      "title": "Secure API and Identity Integrations",
+      "category": "Backend Development and API Integration",
+      "source": "Work at Community Dreams Foundation USA",
+      "tagline": "REST, webhooks and single sign-on across connected services.",
+      "overview": "REST API and webhook integrations between connected services, secured with OAuth 2.0, OpenID Connect and SAML.",
+      "problem": "Communication and authentication failures between integrated applications needed to be traced to their root cause and resolved.",
+      "architecture": [
+        {
+          "label": "Integrate",
+          "detail": "REST API and webhook integrations connect services and exchange payloads."
+        },
+        {
+          "label": "Authenticate",
+          "detail": "OAuth 2.0, OIDC and SAML workflows handle authentication and authorization."
+        },
+        {
+          "label": "Debug",
+          "detail": "HTTP requests, payloads, auth headers and logs are analyzed with Postman and curl."
+        }
+      ],
+      "technologies": "REST APIs, Webhooks, OAuth 2.0, OIDC, SAML, Postman, curl, Python",
+      "contribution": [
+        "Developed and troubleshot the API and webhook integrations.",
+        "Implemented the authentication and authorization workflows.",
+        "Resolved token validation, access configuration and authentication failures."
+      ],
+      "results": [
+        "Restored communication between connected services after integration failures."
+      ],
+      "diagram": "identity"
+    },
+    {
+      "slug": "enterprise-record-reconciliation",
+      "title": "Enterprise Record Reconciliation Automation",
+      "category": "Automation and System Administration",
+      "source": "Work at South Carolina Department of Public Health",
+      "tagline": "~15 hours of manual work removed every week.",
+      "overview": "Python automation and data validation workflows that reconcile enterprise records across an environment of more than 12,000 managed IT resources.",
+      "problem": "Finding missing attributes and configuration discrepancies across thousands of managed IT resources was a slow, manual process.",
+      "architecture": [
+        {
+          "label": "Collect",
+          "detail": "Enterprise records gathered from the managed environment."
+        },
+        {
+          "label": "Reconcile",
+          "detail": "Python workflows reconcile records and identify missing attributes."
+        },
+        {
+          "label": "Detect",
+          "detail": "Configuration discrepancies are flagged for follow-up."
+        },
+        {
+          "label": "Report",
+          "detail": "SQL Server and SSRS reporting give stakeholders operational visibility."
+        }
+      ],
+      "technologies": "Python, Microsoft SQL Server, SSRS",
+      "contribution": [
+        "Developed the automation and data validation workflows."
+      ],
+      "results": [
+        "Covers 12,000+ managed IT resources.",
+        "Eliminated approximately 15 hours of manual work per week."
+      ],
+      "diagram": "reconcile"
+    }
+  ]
+}
