@@ -1,0 +1,50 @@
+/** Professional summary highlights. Each card is one focus area. */
+export const summaryIntro =
+  "3+ years building and supporting enterprise applications, backend services, cloud integrations and data workflows across healthcare IT, non-profit and product engineering teams.";
+
+export const summaryStats = [
+  { value: "3+", label: "Years of engineering experience" },
+  { value: "12,000+", label: "Managed IT resources validated by automation" },
+  { value: "~40%", label: "Faster SQL query execution after optimization" },
+  { value: "75%+", label: "Less time spent on release verification" },
+];
+
+export type SummaryArea = { icon: string; title: string; body: string };
+
+export const summaryAreas: SummaryArea[] = [
+  {
+    icon: "Code2",
+    title: "Software & systems engineering",
+    body: "Enterprise application features in C#, ASP.NET, .NET Core, Angular and TypeScript, built through Agile/Scrum with developers, DBAs and stakeholders.",
+  },
+  {
+    icon: "Server",
+    title: "Backend & troubleshooting",
+    body: "Backend components in Java, Python and SQL, with root-cause analysis across logs, request and response behaviour and integration dependencies.",
+  },
+  {
+    icon: "Cloud",
+    title: "Cloud infrastructure & AWS",
+    body: "AWS application integrations and serverless workflows using Lambda, DynamoDB, EventBridge, SNS and CloudWatch. AWS Certified Solutions Architect – Associate.",
+  },
+  {
+    icon: "Database",
+    title: "Data engineering & ETL",
+    body: "ETL and reconciliation pipelines that collect, transform and validate records, plus SQL Server stored procedures and SSRS reporting.",
+  },
+  {
+    icon: "Workflow",
+    title: "Automation & scripting",
+    body: "Python and Shell automation for data validation, health checks, deployment validation and recurring operational tasks.",
+  },
+  {
+    icon: "Activity",
+    title: "Monitoring & observability",
+    body: "Production monitoring with Grafana, Sentry and AWS CloudWatch to surface recurring exceptions and performance issues.",
+  },
+  {
+    icon: "Plug",
+    title: "APIs & production support",
+    body: "REST API and webhook integrations, OAuth 2.0, OIDC and SAML authentication, debugged with Postman and curl.",
+  },
+];

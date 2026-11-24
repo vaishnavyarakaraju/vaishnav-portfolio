@@ -1,0 +1,86 @@
+/**
+ * Work history. Newest first. Every bullet here comes from the resume.
+ * To add a role, copy one object and edit it. `logo` is optional and should
+ * only point to an official asset in /public/logos.
+ */
+export type Experience = {
+  company: string;
+  role: string;
+  location?: string;
+  start: string;
+  end: string;
+  summary: string;
+  highlights: string[];
+  responsibilities: string[];
+  tools: string[];
+  logo?: string;
+};
+
+export const experience: Experience[] = [
+  {
+    company: "South Carolina Department of Public Health",
+    role: "Systems Engineer",
+    location: "South Carolina, USA",
+    start: "Jan 2026",
+    end: "Present",
+    summary:
+      "Building and maintaining enterprise application functionality, reporting and data validation automation across public health technology systems.",
+    highlights: [
+      "~40% improvement in query execution time across reported SQL Server optimization efforts.",
+      "Python validation workflows across 12,000+ managed IT resources, eliminating ~15 hours of manual work per week.",
+    ],
+    responsibilities: [
+      "Develop and maintain enterprise application functionality using C#, ASP.NET and .NET Core, supporting enhancements, backend functionality and integration requirements.",
+      "Develop and maintain frontend components using Angular and TypeScript, integrating REST APIs between frontend applications and backend services while validating request and response behaviour.",
+      "Design, develop and optimize Microsoft SQL Server queries and stored procedures to retrieve, validate and process relational data.",
+      "Support healthcare application security and data protection by applying HIPAA compliance practices, reviewing application access and troubleshooting authentication and authorization issues.",
+      "Develop Python automation and data validation workflows to reconcile enterprise records, identify missing attributes and detect configuration discrepancies.",
+      "Develop and maintain reporting solutions with SQL Server Reporting Services (SSRS) for structured data retrieval and operational visibility.",
+      "Collaborate with DBAs, developers and business stakeholders through Agile/Scrum to analyze requirements, validate changes, troubleshoot production incidents and maintain documentation.",
+    ],
+    tools: ["C#", "ASP.NET", ".NET Core", "Angular", "TypeScript", "SQL Server", "SSRS", "Python", "REST APIs", "HIPAA"],
+  },
+  {
+    company: "Community Dreams Foundation USA",
+    role: "Data Systems Engineer",
+    location: "USA",
+    start: "Jun 2025",
+    end: "Jan 2026",
+    summary:
+      "Python backend services, AWS integration workflows, secure authentication and production monitoring for cloud-hosted applications.",
+    highlights: [
+      "Release verification cut from ~40 minutes to under 10 minutes, a 75%+ efficiency gain.",
+      "Kept cloud-hosted applications reliable through a reported 10x increase in traffic.",
+    ],
+    responsibilities: [
+      "Developed and maintained Python-based backend services and AWS application integration workflows supporting cloud-hosted applications.",
+      "Built automated application health checks and deployment validation scripts in Python.",
+      "Developed and troubleshot REST API and webhook integrations, analyzing HTTP requests, payloads, authentication headers and logs with Postman and curl.",
+      "Investigated application defects and backend processing failures by analyzing service logs and integration dependencies, coordinating corrective actions.",
+      "Implemented authentication and authorization workflows using OAuth 2.0, OpenID Connect (OIDC) and SAML, troubleshooting token validation and access configuration.",
+      "Implemented monitoring and production troubleshooting workflows with Grafana and Sentry, documenting remediation recommendations.",
+    ],
+    tools: ["Python", "AWS", "REST APIs", "Webhooks", "OAuth 2.0", "OIDC", "SAML", "Grafana", "Sentry", "Postman", "curl"],
+  },
+  {
+    company: "LYFAUX Technology Pvt Ltd",
+    role: "Development Engineer",
+    location: "India",
+    start: "Mar 2021",
+    end: "Aug 2023",
+    summary:
+      "Backend components, APIs and database operations for distributed systems serving more than 50,000 concurrent users.",
+    highlights: [
+      "Investigated application and database issues in distributed systems serving 50,000+ concurrent users.",
+    ],
+    responsibilities: [
+      "Developed and maintained backend application components using Java, Python and SQL, implementing business logic and data-processing workflows.",
+      "Designed and integrated REST APIs and web services between application components and external systems, resolving integration failures.",
+      "Developed and optimized MySQL queries and relational database operations and investigated production data inconsistencies.",
+      "Analyzed application logs, database behaviour and system metrics to identify root causes and implement corrective solutions.",
+      "Implemented Python and Shell automation for application maintenance, data validation, recurring operational tasks and incident investigation.",
+      "Participated across the SDLC: requirements analysis, testing, defect reproduction, debugging, release validation and production issue resolution.",
+    ],
+    tools: ["Java", "Python", "SQL", "MySQL", "REST APIs", "Shell", "SDLC"],
+  },
+];
