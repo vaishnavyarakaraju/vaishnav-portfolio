@@ -15,9 +15,14 @@ Requires Node.js 18.18 or newer (20+ recommended).
 
 ## Editing content (no code needed)
 
-Open **/admin** on the live site (e.g. https://vaishnav-portfolio-three-zeta.vercel.app/admin), log in with GitHub, edit, and click **Publish → Publish now**. The admin saves the change to GitHub and Vercel redeploys the site in about a minute.
+Open **/admin** on the live site (e.g. https://vaishnav-portfolio-three-zeta.vercel.app/admin) and click **Continue with GitHub**. The profile editor shows your portfolio as cards, like a LinkedIn profile:
 
-All content lives in `content/*.json` (profile, summary, experience, projects, skills, certifications, education, about). Short lists such as skills and tools are written as comma-separated text, e.g. `Python, Java, SQL`. Uploaded images and PDFs go to `public/images/uploads/`.
+- Click the pencil (or **Edit intro**) to change something, **Add …** to add a role, project, certification or school, and the arrows to reorder.
+- Skills: type a skill and press Enter; click × to remove it.
+- Photos, certificates and PDFs can be uploaded straight from the edit windows.
+- Nothing is saved until you click **Publish**. Publishing saves everything to GitHub in one go, and Vercel updates the live site in about a minute. The editor tells you when the changes are live.
+
+All content lives in `content/*.json`. Short lists such as skills and tools are stored as comma-separated text, e.g. `Python, Java, SQL`. Uploaded files go to `public/images/uploads/`. The editor's code is in `src/admin/` (repository name and branch are in `src/admin/config.ts`).
 
 ### One-time admin setup
 
@@ -28,8 +33,6 @@ All content lives in `content/*.json` (profile, summary, experience, projects, s
 3. Vercel → Project → Settings → Environment Variables: add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`, then redeploy.
 
 Only GitHub accounts with write access to the repository can save changes. If the site moves to a custom domain, update both URLs in the OAuth App and `site_url` in `public/admin/config.yml`.
-
-To try the admin on your own computer without logging in: run `npx decap-server` in this folder, start `npm run dev`, and open http://localhost:3000/admin.
 
 ## Deploy to Vercel (free)
 
