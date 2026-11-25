@@ -46,7 +46,14 @@
       "diagram": "etl",
       "github": "",
       "demo": "",
-      "screenshots": []
+      "screenshots": [],
+      "onResume": true,
+      "resumeBullets": [
+        "Designed and developed an automated **ETL pipeline using Python and AWS Lambda** to collect, transform, and validate infrastructure records from multiple data sources, improving consistency and reliability across enterprise datasets.",
+        "Implemented structured data storage using **Amazon DynamoDB** and event-driven processing through **Amazon EventBridge**, enabling automated execution of reconciliation workflows whenever asset information changed.",
+        "Developed data validation and reconciliation logic to identify duplicate records, missing attributes, and inconsistent values across more than **12,000 infrastructure resources**, improving the accuracy.",
+        "Integrated **Amazon CloudWatch and Amazon SNS** for execution monitoring, exception tracking, and automated notifications, supporting operational visibility and a reported **99.2% availability**."
+      ]
     },
     {
       "slug": "production-data-monitoring-framework",
@@ -88,7 +95,14 @@
       "diagram": "monitoring",
       "github": "",
       "demo": "",
-      "screenshots": []
+      "screenshots": [],
+      "onResume": true,
+      "resumeBullets": [
+        "Developed a **Python-based data monitoring framework** to validate production records, detect processing anomalies, and identify inconsistencies across backend data workflows.",
+        "Built monitoring dashboards using **AWS CloudWatch and Grafana** to track application health, processing activity, and operational metrics, improving visibility into system behavior and production performance.",
+        "Implemented automated data validation checks and exception-handling workflows to identify missing or inconsistent records before they affected downstream reporting and application processes.",
+        "Investigated recurring processing failures and application issues, documenting root causes and corrective actions to improve data reliability, troubleshooting efficiency, and production support."
+      ]
     },
     {
       "slug": "deployment-validation-automation",
@@ -126,7 +140,9 @@
         "Deployment efficiency improved by more than 75%.",
         "Supported a reported 10x increase in traffic."
       ],
-      "diagram": "deploy"
+      "diagram": "deploy",
+      "onResume": false,
+      "resumeBullets": []
     },
     {
       "slug": "secure-api-identity-integrations",
@@ -159,7 +175,9 @@
       "results": [
         "Restored communication between connected services after integration failures."
       ],
-      "diagram": "identity"
+      "diagram": "identity",
+      "onResume": false,
+      "resumeBullets": []
     },
     {
       "slug": "enterprise-record-reconciliation",
@@ -195,7 +213,9 @@
         "Covers 12,000+ managed IT resources.",
         "Eliminated approximately 15 hours of manual work per week."
       ],
-      "diagram": "reconcile"
+      "diagram": "reconcile",
+      "onResume": false,
+      "resumeBullets": []
     }
   ]
 }

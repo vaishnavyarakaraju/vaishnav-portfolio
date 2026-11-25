@@ -27,7 +27,7 @@ export function Contact() {
                 <a href={`mailto:${site.email}`} className="btn bg-bg text-fg hover:bg-bg/90">
                   <Mail size={16} aria-hidden="true" /> Contact Me
                 </a>
-                <a href={site.resume} download className="btn bg-bg/10 text-bg ring-1 ring-bg/20 hover:bg-bg/15">
+                <a href={site.resume} download={site.resumeFileName} className="btn bg-bg/10 text-bg ring-1 ring-bg/20 hover:bg-bg/15">
                   <Download size={16} aria-hidden="true" /> Download Resume
                 </a>
               </div>

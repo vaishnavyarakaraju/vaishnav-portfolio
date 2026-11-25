@@ -68,7 +68,7 @@ export function Hero() {
               <a href="#projects" className="btn-primary">
                 Explore My Work <ArrowDown size={15} aria-hidden="true" />
               </a>
-              <a href={site.resume} download className="btn-secondary">
+              <a href={site.resume} download={site.resumeFileName} className="btn-secondary">
                 <Download size={15} aria-hidden="true" /> Download Resume
               </a>
               <SocialButtons />

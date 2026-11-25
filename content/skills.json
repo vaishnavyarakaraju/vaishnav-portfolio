@@ -1,49 +1,70 @@
 {
   "groups": [
     {
-      "title": "Programming",
+      "title": "Programming Languages",
       "icon": "Code2",
-      "skills": "Python, Java, C#, JavaScript, TypeScript, SQL, C++, Bash"
+      "skills": "C#, Java, Python, JavaScript, TypeScript, SQL",
+      "resume": true
     },
     {
       "title": "Application Development",
       "icon": "AppWindow",
-      "skills": "ASP.NET, .NET Core, Angular, Web Services, Application Integration"
+      "skills": "ASP.NET, .NET Core, Angular, REST APIs, Web Services, Backend Development, Application Integration",
+      "resume": true
     },
     {
-      "title": "Cloud",
+      "title": "Database Technologies",
+      "icon": "Database",
+      "skills": "Microsoft SQL Server, MySQL, Relational Database Design, Stored Procedures, SQL Query Optimization, SQL Server Reporting Services (SSRS)",
+      "resume": true
+    },
+    {
+      "title": "Cloud Technologies",
       "icon": "Cloud",
-      "skills": "AWS, Azure, Google Cloud Platform"
+      "skills": "Amazon Web Services (AWS), AWS Lambda, Amazon DynamoDB, Cloud-Based Application Hosting",
+      "resume": true
     },
     {
-      "title": "AWS Services",
+      "title": "Development Methodologies",
+      "icon": "Workflow",
+      "skills": "SDLC, Agile, Scrum, Continuous Integration, CI/CD, Git, GitHub",
+      "resume": true
+    },
+    {
+      "title": "Testing and Troubleshooting",
+      "icon": "Activity",
+      "skills": "Unit Testing, Integration Testing, System Testing, Debugging, Root Cause Analysis, Application Monitoring, Production Support",
+      "resume": true
+    },
+    {
+      "title": "Security and Compliance",
+      "icon": "ShieldCheck",
+      "skills": "HIPAA, OAuth 2.0, OpenID Connect (OIDC), SAML, Authentication and Authorization",
+      "resume": true
+    },
+    {
+      "title": "Development Tools",
+      "icon": "Plug",
+      "skills": "Microsoft Visual Studio, Postman, curl, Grafana, Sentry, AWS CloudWatch",
+      "resume": true
+    },
+    {
+      "title": "Cloud Platforms & AWS Services",
       "icon": "Layers",
-      "skills": "Lambda, S3, Glue, Redshift, CloudWatch, DynamoDB, EventBridge, SNS"
+      "skills": "Azure, Google Cloud Platform, Amazon S3, AWS Glue, Amazon Redshift, Amazon EventBridge, Amazon SNS",
+      "resume": false
     },
     {
       "title": "DevOps & Infrastructure",
       "icon": "Container",
-      "skills": "Docker, Kubernetes, Terraform, GitHub Actions, Jenkins, CI/CD, Linux, Git"
+      "skills": "Docker, Kubernetes, Terraform, GitHub Actions, Jenkins, Linux, Bash, C++",
+      "resume": false
     },
     {
-      "title": "Databases & Data Engineering",
+      "title": "Data Engineering",
       "icon": "Database",
-      "skills": "SQL, Microsoft SQL Server, MySQL, Stored Procedures, SSRS, ETL, Data Pipelines, Data Quality, Data Monitoring"
-    },
-    {
-      "title": "APIs & Backend",
-      "icon": "Plug",
-      "skills": "REST APIs, Webhooks, OAuth 2.0, OIDC, SAML, Postman, curl"
-    },
-    {
-      "title": "Monitoring & Observability",
-      "icon": "Activity",
-      "skills": "Grafana, Sentry, AWS CloudWatch"
-    },
-    {
-      "title": "Practices & Compliance",
-      "icon": "ShieldCheck",
-      "skills": "Agile / Scrum, SDLC, Unit & Integration Testing, Root Cause Analysis, Production Support, HIPAA"
+      "skills": "ETL, Data Pipelines, Data Quality, Data Monitoring",
+      "resume": false
     }
   ]
 }

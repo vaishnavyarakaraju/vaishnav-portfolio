@@ -13,6 +13,7 @@ export const CONTENT_FILES = [
   "certifications",
   "education",
   "about",
+  "resume",
 ] as const;
 
 export type ContentKey = (typeof CONTENT_FILES)[number];

@@ -346,6 +346,20 @@ export function UploadField({ label, value, onChange, kind = "image", hint }: {
 
 /* ------------------------------------------------------------------ section card */
 
+/** A labelled on/off switch. */
+export function Toggle({ label, checked, onChange, hint }: { label: string; checked: boolean; onChange: (v: boolean) => void; hint?: string }) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3">
+      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="peer sr-only" />
+      <span aria-hidden="true" className="relative mt-0.5 h-5 w-9 shrink-0 rounded-full bg-line/20 transition peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent after:absolute after:left-0.5 after:top-0.5 after:h-4 after:w-4 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-4" />
+      <span>
+        <span className="text-sm font-medium">{label}</span>
+        {hint && <span className="mt-0.5 block text-xs text-muted">{hint}</span>}
+      </span>
+    </label>
+  );
+}
+
 export function Card({ id, title, subtitle, action, children }: {
   id: string; title: string; subtitle?: string; action?: ReactNode; children: ReactNode;
 }) {

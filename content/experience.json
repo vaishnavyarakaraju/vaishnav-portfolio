@@ -12,13 +12,13 @@
         "Python validation workflows across 12,000+ managed IT resources, eliminating ~15 hours of manual work per week."
       ],
       "responsibilities": [
-        "Develop and maintain enterprise application functionality using C#, ASP.NET and .NET Core, supporting enhancements, backend functionality and integration requirements.",
-        "Develop and maintain frontend components using Angular and TypeScript, integrating REST APIs between frontend applications and backend services while validating request and response behaviour.",
-        "Design, develop and optimize Microsoft SQL Server queries and stored procedures to retrieve, validate and process relational data.",
-        "Support healthcare application security and data protection by applying HIPAA compliance practices, reviewing application access and troubleshooting authentication and authorization issues.",
-        "Develop Python automation and data validation workflows to reconcile enterprise records, identify missing attributes and detect configuration discrepancies.",
-        "Develop and maintain reporting solutions with SQL Server Reporting Services (SSRS) for structured data retrieval and operational visibility.",
-        "Collaborate with DBAs, developers and business stakeholders through Agile/Scrum to analyze requirements, validate changes, troubleshoot production incidents and maintain documentation."
+        "Develop and maintain enterprise application functionality using **C#, ASP.NET, and .NET Core**, supporting application enhancements, backend functionality, and integration requirements across public health technology systems.",
+        "Develop and maintain frontend application components using **Angular and TypeScript**, integrating REST APIs to exchange data between frontend applications and backend services while validating request and response behavior.",
+        "Design, develop, and optimize **Microsoft SQL Server queries and stored procedures** to retrieve, validate, and process relational data, achieving approximately **40% improvement in query execution time** across reported optimization efforts.",
+        "Support healthcare application security and data protection requirements by applying **HIPAA compliance practices**, reviewing application access, troubleshooting authentication and authorization issues, and investigating data accessibility concerns.",
+        "Develop **Python automation and data validation workflows** to reconcile enterprise records, identify missing attributes, and detect configuration discrepancies across an environment supporting **12,000+ managed IT resources, eliminating approximately 15 hours of manual work per week**.",
+        "Develop and maintain application reporting solutions using **SQL Server Reporting Services (SSRS)**, supporting structured data retrieval, reporting requirements, and operational visibility for technical stakeholders.",
+        "Collaborate with database administrators, application developers, and business stakeholders through **Agile/Scrum methodologies** to analyze requirements, validate application changes, troubleshoot production incidents, and maintain technical documentation."
       ],
       "tools": "C#, ASP.NET, .NET Core, Angular, TypeScript, SQL Server, SSRS, Python, REST APIs, HIPAA"
     },
@@ -34,12 +34,12 @@
         "Kept cloud-hosted applications reliable through a reported 10x increase in traffic."
       ],
       "responsibilities": [
-        "Developed and maintained Python-based backend services and AWS application integration workflows supporting cloud-hosted applications.",
-        "Built automated application health checks and deployment validation scripts in Python.",
-        "Developed and troubleshot REST API and webhook integrations, analyzing HTTP requests, payloads, authentication headers and logs with Postman and curl.",
-        "Investigated application defects and backend processing failures by analyzing service logs and integration dependencies, coordinating corrective actions.",
-        "Implemented authentication and authorization workflows using OAuth 2.0, OpenID Connect (OIDC) and SAML, troubleshooting token validation and access configuration.",
-        "Implemented monitoring and production troubleshooting workflows with Grafana and Sentry, documenting remediation recommendations."
+        "Developed and maintained **Python-based backend services and AWS application integration workflows, supporting cloud-hosted applications and improving operational reliability during periods of increased application demand, including a reported 10x increase in traffic**.",
+        "Built automated application health checks and deployment validation scripts using **Python, reducing release verification time from approximately 40 minutes to under 10 minutes and improving deployment efficiency by more than 75%**.",
+        "Developed and troubleshot **REST API and webhook integrations, analyzing HTTP requests, response payloads, authentication headers, and application logs using Postman and curl** to resolve communication failures between connected services.",
+        "Investigated application defects and backend processing failures by analyzing service logs, request-response behavior, and integration dependencies, identifying root causes and coordinating corrective actions to restore application functionality.",
+        "Implemented secure application authentication and authorization workflows using **OAuth 2.0, OpenID Connect (OIDC), and SAML**, troubleshooting token validation, access configurations, and authentication failures across integrated applications.",
+        "Implemented application monitoring and production troubleshooting workflows using **Grafana and Sentry**, identifying recurring application exceptions, analyzing performance issues, and documenting remediation recommendations for engineering stakeholders."
       ],
       "tools": "Python, AWS, REST APIs, Webhooks, OAuth 2.0, OIDC, SAML, Grafana, Sentry, Postman, curl"
     },
@@ -54,12 +54,12 @@
         "Investigated application and database issues in distributed systems serving 50,000+ concurrent users."
       ],
       "responsibilities": [
-        "Developed and maintained backend application components using Java, Python and SQL, implementing business logic and data-processing workflows.",
-        "Designed and integrated REST APIs and web services between application components and external systems, resolving integration failures.",
-        "Developed and optimized MySQL queries and relational database operations and investigated production data inconsistencies.",
-        "Analyzed application logs, database behaviour and system metrics to identify root causes and implement corrective solutions.",
-        "Implemented Python and Shell automation for application maintenance, data validation, recurring operational tasks and incident investigation.",
-        "Participated across the SDLC: requirements analysis, testing, defect reproduction, debugging, release validation and production issue resolution."
+        "Developed and maintained backend application components using **Java, Python, and SQL**, implementing business logic, data-processing workflows, and application functionality to support business-critical operations.",
+        "Designed and integrated **REST APIs and web services** to facilitate communication between application components and external systems, validating request and response payloads and resolving integration failures.",
+        "Developed and optimized **MySQL queries and relational database operations** to retrieve, validate, and manage application data, investigate production data inconsistencies, and improve database performance.",
+        "Investigated complex application and database issues affecting distributed systems serving more than **50,000 concurrent users**, analyzing application logs, database behavior, and system metrics to identify root causes and implement corrective solutions.",
+        "Implemented **Python and Shell automation scripts** for application maintenance, data validation, recurring operational tasks, and incident investigation, reducing repetitive troubleshooting activities and improving operational efficiency.",
+        "Participated in the **Software Development Life Cycle (SDLC)**, collaborating with development and support teams on requirements analysis, application testing, defect reproduction, debugging, release validation, and production issue resolution."
       ],
       "tools": "Java, Python, SQL, MySQL, REST APIs, Shell, SDLC"
     }

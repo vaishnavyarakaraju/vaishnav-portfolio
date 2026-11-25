@@ -9,7 +9,7 @@ import { CONTENT_FILES, REPO_NAME, REPO_OWNER, UPLOAD_DIR, UPLOAD_URL, contentPa
 import { canPush, commitFiles, deploymentState, fileSha, getUser, readJson, type CommitFile } from "./github";
 import { UploadContext } from "./ui";
 import {
-  AboutSection, CertificationsSection, EducationSection, ExperienceSection, IntroSection, ProjectsSection, SkillsSection, SummarySection,
+  AboutSection, CertificationsSection, EducationSection, ExperienceSection, IntroSection, ProjectsSection, ResumeSection, SkillsSection, SummarySection,
 } from "./sections";
 
 type Data = Record<ContentKey, any>;
@@ -32,6 +32,7 @@ const sections: { id: string; label: string; key: ContentKey }[] = [
   { id: "education", label: "Education", key: "education" },
   { id: "about", label: "About", key: "about" },
   { id: "summary", label: "Summary", key: "summary" },
+  { id: "resume", label: "Resume", key: "resume" },
 ];
 
 const fileToBase64 = (file: File) =>
@@ -266,6 +267,7 @@ export function AdminApp() {
             <EducationSection value={data.education} set={setKey("education")} />
             <AboutSection value={data.about} set={setKey("about")} />
             <SummarySection value={data.summary} set={setKey("summary")} />
+            <ResumeSection value={data.resume} set={setKey("resume")} />
             <p className="pb-4 text-center text-xs text-muted">Edits stay on this page until you click Publish.</p>
           </main>
         </div>

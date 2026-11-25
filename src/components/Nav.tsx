@@ -84,7 +84,7 @@ export function Nav({ onHome = true }: { onHome?: boolean }) {
 
         <div className="flex items-center gap-1">
           <ThemeToggle />
-          <a href={site.resume} download className="btn-primary hidden !px-4 !py-2 text-[13px] sm:inline-flex">
+          <a href={site.resume} download={site.resumeFileName} className="btn-primary hidden !px-4 !py-2 text-[13px] sm:inline-flex">
             <Download size={14} aria-hidden="true" /> Resume
           </a>
           <button
@@ -125,7 +125,7 @@ export function Nav({ onHome = true }: { onHome?: boolean }) {
                 </li>
               ))}
             </ul>
-            <a href={site.resume} download className="btn-primary mt-3 w-full !py-3">
+            <a href={site.resume} download={site.resumeFileName} className="btn-primary mt-3 w-full !py-3">
               <Download size={16} aria-hidden="true" /> Download Resume
             </a>
           </motion.div>

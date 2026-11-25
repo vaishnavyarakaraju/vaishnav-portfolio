@@ -2,15 +2,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import {
-  ArrowDown, ArrowUp, Award, Briefcase, ExternalLink, FolderGit2, GraduationCap, MapPin, Mail, Pencil, Trash2, Check, X,
+  ArrowDown, ArrowUp, Award, Briefcase, ExternalLink, FileText, FolderGit2, GraduationCap, MapPin, Mail, Pencil, Trash2, Check, X,
 } from "lucide-react";
 import {
-  AddButton, BulletsInput, Card, ChipInput, Dialog, IconButton, PairsInput, SelectField, TextField, UploadField,
+  AddButton, BulletsInput, Card, ChipInput, Dialog, IconButton, PairsInput, SelectField, TextField, Toggle, UploadField,
   fromList, move, slugify, toList, useUploads,
 } from "./ui";
 
 type Setter<T> = (next: T) => void;
 type Obj = Record<string, any>;
+
+const BOLD_HINT = "Also printed on the resume. Put **double stars** around words to make them bold, like **Python**.";
+
+function ResumeBadge() {
+  return <span className="ml-1.5 rounded-full bg-fg/[0.06] px-2 py-0.5 align-middle text-[11px] font-medium text-muted">On resume</span>;
+}
 
 /* ------------------------------------------------------------------ shared list editing */
 
@@ -113,7 +119,6 @@ export function IntroSection({ value, set }: { value: Obj; set: Setter<Obj> }) {
           <TextField label="GitHub link" value={d.github} onChange={(v) => patch({ github: v })} />
           <TextField label="Initials (logo)" value={d.initials} onChange={(v) => patch({ initials: v.slice(0, 3) })} />
         </div>
-        <UploadField label="Resume (PDF)" kind="pdf" value={d.resume} onChange={(v) => patch({ resume: v })} hint="Visitors download this from the Resume buttons." />
         <TextField label="Website address" value={d.url} onChange={(v) => patch({ url: v })} hint="Only change this if you move to a new domain." />
       </Dialog>
     </section>
@@ -128,8 +133,8 @@ export function SkillsSection({ value, set }: { value: Obj; set: Setter<Obj> }) 
   const [renaming, setRenaming] = useState<number | null>(null);
   const [name, setName] = useState("");
   return (
-    <Card id="skills" title="Skills" subtitle="Type a skill and press Enter. Click × to remove one."
-      action={<AddButton onClick={() => { setGroups([...groups, { title: "New group", icon: "Code2", skills: "" }]); setRenaming(groups.length); setName("New group"); }}>Add group</AddButton>}>
+    <Card id="skills" title="Skills" subtitle="Type a skill and press Enter. Click × to remove one. Groups marked “On resume” are printed on the PDF resume."
+      action={<AddButton onClick={() => { setGroups([...groups, { title: "New group", icon: "Code2", skills: "", resume: false }]); setRenaming(groups.length); setName("New group"); }}>Add group</AddButton>}>
       <div className="space-y-5">
         {groups.map((g, i) => (
           <div key={i} className="rounded-2xl bg-surface/60 p-4 ring-1 ring-line/[0.06]">
@@ -141,7 +146,7 @@ export function SkillsSection({ value, set }: { value: Obj; set: Setter<Obj> }) 
                   <IconButton label="Cancel" onClick={() => setRenaming(null)}><X size={17} /></IconButton>
                 </form>
               ) : (
-                <button type="button" onClick={() => { setRenaming(i); setName(g.title); }} className="group inline-flex items-center gap-2 text-[15px] font-semibold" title="Rename group">
+                <button type="button" onClick={() => { setRenaming(i); setName(g.title); }} className="group inline-flex items-center gap-2 text-left text-[15px] font-semibold" title="Rename group">
                   {g.title} <Pencil size={13} className="text-muted opacity-0 transition group-hover:opacity-100" aria-hidden="true" />
                 </button>
               )}
@@ -152,6 +157,9 @@ export function SkillsSection({ value, set }: { value: Obj; set: Setter<Obj> }) 
               </div>
             </div>
             <ChipInput value={toList(g.skills)} onChange={(v) => setGroups(groups.map((x, j) => (j === i ? { ...x, skills: fromList(v) } : x)))} placeholder="Add a skill and press Enter" />
+            <div className="mt-3">
+              <Toggle label="On resume" checked={g.resume !== false} onChange={(v) => setGroups(groups.map((x, j) => (j === i ? { ...x, resume: v } : x)))} />
+            </div>
           </div>
         ))}
         {!groups.length && <Empty>No skill groups yet.</Empty>}
@@ -194,7 +202,7 @@ export function ExperienceSection({ value, set }: { value: Obj; set: Setter<Obj>
         </div>
         <TextField label="Location" value={d.location} onChange={(v) => ed.set({ location: v })} />
         <TextField label="One-line summary" multiline rows={2} value={d.summary} onChange={(v) => ed.set({ summary: v })} />
-        <BulletsInput label="Key responsibilities" value={d.responsibilities ?? []} onChange={(v) => ed.set({ responsibilities: v })} addLabel="Add responsibility" />
+        <BulletsInput label="Key responsibilities" hint={BOLD_HINT} value={d.responsibilities ?? []} onChange={(v) => ed.set({ responsibilities: v })} addLabel="Add responsibility" />
         <BulletsInput label="Impact highlights" hint="Measurable results. Shown in the Impact box." value={d.highlights ?? []} onChange={(v) => ed.set({ highlights: v })} addLabel="Add highlight" />
         <ChipInput label="Tools" value={toList(d.tools)} onChange={(v) => ed.set({ tools: fromList(v) })} />
       </Dialog>
@@ -216,7 +224,7 @@ export function ProjectsSection({ value, set }: { value: Obj; set: Setter<Obj> }
   const projects: Obj[] = value.projects ?? [];
   const categories = toList(value.categories);
   const setProjects = (p: Obj[]) => set({ ...value, projects: p });
-  const ed = useItemEditor(projects, setProjects, () => ({ slug: "", title: "", category: categories[0] ?? "", source: "Project", tagline: "", overview: "", problem: "", architecture: [], technologies: "", contribution: [], results: [], diagram: "etl", github: "", demo: "", screenshots: [] }));
+  const ed = useItemEditor(projects, setProjects, () => ({ slug: "", title: "", category: categories[0] ?? "", source: "Project", tagline: "", overview: "", problem: "", architecture: [], technologies: "", contribution: [], results: [], diagram: "etl", github: "", demo: "", screenshots: [], onResume: false, resumeBullets: [] }));
   const d = ed.draft ?? {};
   const save = () =>
     ed.save((draft) => {
@@ -235,7 +243,7 @@ export function ProjectsSection({ value, set }: { value: Obj; set: Setter<Obj> }
           <li key={p.slug || i} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-surface ring-1 ring-line/[0.06]"><FolderGit2 size={20} className="text-muted" aria-hidden="true" /></span>
             <div className="min-w-0 flex-1">
-              <p className="font-semibold">{p.title || "Untitled project"} {i < 2 && <span className="ml-1 rounded-full bg-accent/10 px-2 py-0.5 align-middle text-[11px] font-medium text-accent">Featured</span>}</p>
+              <p className="font-semibold">{p.title || "Untitled project"} {i < 2 && <span className="ml-1 rounded-full bg-accent/10 px-2 py-0.5 align-middle text-[11px] font-medium text-accent">Featured</span>}{p.onResume && <ResumeBadge />}</p>
               <p className="text-sm text-muted">{p.category}</p>
               {p.tagline && <p className="mt-1 line-clamp-2 text-sm text-fg/75">{p.tagline}</p>}
             </div>
@@ -268,6 +276,12 @@ export function ProjectsSection({ value, set }: { value: Obj; set: Setter<Obj> }
           <TextField label="Live demo link (optional)" value={d.demo} onChange={(v) => ed.set({ demo: v })} />
         </div>
         <ScreenshotsInput value={d.screenshots ?? []} onChange={(v) => ed.set({ screenshots: v })} />
+        <div className="space-y-4 rounded-2xl bg-surface/60 p-4 ring-1 ring-line/[0.06]">
+          <Toggle label="Show on resume" hint="Printed in the Projects section of the PDF resume." checked={!!d.onResume} onChange={(v) => ed.set({ onResume: v, resumeBullets: v && !(d.resumeBullets ?? []).length ? [""] : d.resumeBullets ?? [] })} />
+          {d.onResume && (
+            <BulletsInput label="Resume bullet points" hint={`${BOLD_HINT} If left empty, “My contribution” and “Results” are used.`} value={d.resumeBullets ?? []} onChange={(v) => ed.set({ resumeBullets: v })} />
+          )}
+        </div>
         {!ed.isNew && <p className="text-xs text-muted">Page address: /projects/{d.slug}</p>}
       </Dialog>
     </Card>
@@ -450,3 +464,35 @@ export function SummarySection({ value, set }: { value: Obj; set: Setter<Obj> })
   );
 }
 
+
+/* ------------------------------------------------------------------ resume */
+
+export function ResumeSection({ value, set }: { value: Obj; set: Setter<Obj> }) {
+  const [draft, setDraft] = useState<Obj | null>(null);
+  const d = draft ?? {};
+  return (
+    <Card id="resume" title="Resume" subtitle="The PDF resume is built automatically from this page: name, contact, skills marked “On resume”, experience, projects marked “On resume”, certifications and education."
+      action={<IconButton label="Edit resume settings" onClick={() => setDraft(structuredClone(value))}><Pencil size={17} /></IconButton>}>
+      <p className="text-xs font-medium uppercase tracking-wide text-muted">{value.summaryHeading || "Professional Summary"}</p>
+      <p className="mt-1 text-[15px] leading-relaxed text-fg/80">{String(value.summary ?? "").replace(/\*\*/g, "")}</p>
+      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
+        {value.phone && <span>Phone: {value.phone}</span>}
+        <span>File name: {value.fileName}</span>
+      </div>
+      <a href="/resume.pdf" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2 text-sm font-medium ring-1 ring-line/[0.08] transition hover:ring-accent">
+        <FileText size={16} aria-hidden="true" /> Open current resume PDF <ExternalLink size={14} aria-hidden="true" />
+      </a>
+      <p className="mt-2 text-xs text-muted">The PDF updates about a minute after you publish.</p>
+
+      <Dialog open={!!draft} title="Edit resume" onClose={() => setDraft(null)} onSave={() => { set({ ...value, ...d }); setDraft(null); }}>
+        <TextField label="Summary heading" value={d.summaryHeading} onChange={(v) => setDraft({ ...d, summaryHeading: v })} />
+        <TextField label="Professional summary" hint="Only shown on the resume. Put **double stars** around words to make them bold." multiline rows={6} value={d.summary} onChange={(v) => setDraft({ ...d, summary: v })} />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <TextField label="Phone (resume only)" value={d.phone} onChange={(v) => setDraft({ ...d, phone: v })} hint="Leave empty to hide it." />
+          <TextField label="Download file name" value={d.fileName} onChange={(v) => setDraft({ ...d, fileName: v })} placeholder="Vaishnav_Yarakaraju_Resume.pdf" />
+        </div>
+        <p className="text-xs text-muted">Name, email and LinkedIn come from the Intro card.</p>
+      </Dialog>
+    </Card>
+  );
+}

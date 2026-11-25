@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MapPin, TrendingUp } from "lucide-react";
 import { experience, type Experience as Exp } from "@/content/experience";
 import { Reveal } from "./Reveal";
+import { Rich } from "./Rich";
 import { Section } from "./Section";
 
 export function Experience() {
@@ -82,7 +83,7 @@ function ExperienceCard({ job, defaultOpen }: { job: Exp; defaultOpen: boolean }
                   {job.responsibilities.map((r) => (
                     <li key={r} className="flex gap-3 text-[15px] leading-relaxed text-fg/85">
                       <span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-fg/40" />
-                      {r}
+                      <span><Rich text={r} /></span>
                     </li>
                   ))}
                 </ul>

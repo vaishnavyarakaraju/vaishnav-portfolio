@@ -20,6 +20,10 @@ export type Project = {
   github?: string;
   demo?: string;
   screenshots?: { src: string; alt: string }[];
+  /** Include this project in the downloadable resume. */
+  onResume: boolean;
+  /** Bullet points used on the resume (supports **bold**). */
+  resumeBullets: string[];
 };
 
 export const projectCategories: string[] = toList(data.categories);
@@ -40,6 +44,8 @@ export const projects: Project[] = (data.projects as unknown as Partial<Project>
   github: p.github,
   demo: p.demo,
   screenshots: p.screenshots ?? [],
+  onResume: !!p.onResume,
+  resumeBullets: (p.resumeBullets ?? []).filter(Boolean),
 }));
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
